@@ -1,3 +1,5 @@
+import 'dotenv/config';
+
 import { FastifyInstance } from "fastify";
 import { PrismaRepository } from "../repositories/prisma-repository";
 import { CreateText } from "../use-cases/create-text";
@@ -21,10 +23,10 @@ export async function chatRoute(app: FastifyInstance){
 
     connections.push(connect.socket);
 
-    connect.socket.on('message', async (message: IText) =>{
+    connect.socket.on('message', async (content: string) =>{
       await createText.execute({
-        content: message.content.toString(),
-        sender: message.sender
+        content: content.toString(),
+        sender: 'User'
       })
 
       const input = {
