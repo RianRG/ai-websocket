@@ -13,7 +13,6 @@ const replicate = new Replicate({
 
 export async function chatRoute(app: FastifyInstance){
   const connections: WebSocket[] = [];
-  let text: string="";
   app.get('/chat', { websocket: true }, async (connect, req) =>{
     const databaseRepository = new PrismaRepository();
 
@@ -24,8 +23,9 @@ export async function chatRoute(app: FastifyInstance){
     connections.push(connect.socket);
 
     connect.socket.on('message', async (content: string) =>{
+      content = content.toString()
       await createText.execute({
-        content: content.toString(),
+        content,
         sender: 'User'
       })
 
@@ -33,7 +33,7 @@ export async function chatRoute(app: FastifyInstance){
         debug: false,
         top_k: 50,
         top_p: 1,
-        prompt: text,
+        prompt: content,
         temperature: 0.01,
         system_prompt: promptIA,
         max_new_tokens: 500,
@@ -45,7 +45,7 @@ export async function chatRoute(app: FastifyInstance){
       for await (const event of replicate.stream("meta/llama-2-70b-chat", { input })) {
         botAnswer+=event.toString();
       };
-
+      
       await createText.execute({
         content: botAnswer,
         sender: 'Assistent'
