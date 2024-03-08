@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ImagesService } from 'src/app/services/images.service';
 
 @Component({
   selector: 'app-images-chat',
@@ -6,5 +8,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./images-chat.component.css']
 })
 export class ImagesChatComponent {
+  imageForm!: FormGroup
+  constructor(
+    private images: ImagesService,
+    private fb: FormBuilder
+  ){
+    this.imageForm = this.fb.group({
+      imageRequest: ['', Validators.required]
+    })
+  };
 
+  onSubmit(){
+    
+  }
 }

@@ -1,1 +1,5 @@
-<p>images-chat works!</p>
+<main>
+  <form [formGroup]="imageForm" (ngSubmit)="onSubmit()">
+    <input type="text" formControlName="imageRequest">
+  </form>
+</main>

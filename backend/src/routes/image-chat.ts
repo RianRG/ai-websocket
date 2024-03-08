@@ -1,6 +1,8 @@
 import 'dotenv/config'
 
 import { FastifyInstance } from "fastify";
+import path from 'path';
+import fs from 'fs'
 import Replicate from 'replicate'
 
 const replicate = new Replicate({
@@ -8,7 +10,7 @@ const replicate = new Replicate({
 })
 
 export async function imageChat(app: FastifyInstance){
-  app.get('/chat/image', { websocket: true }, async (connect, req) =>{
+  app.get('/chat/images', { websocket: true }, async (connect, req) =>{
     connect.socket.on('message', async (content: string) =>{
       content = content.toString()
 
@@ -29,7 +31,16 @@ export async function imageChat(app: FastifyInstance){
 
       const fileLink = output[0];
 
-      connect.socket.send(fileLink);
+      const response: any = await fetch(fileLink);
+      const buffer = await response.buffer();
+      const splitter = fileLink.split('/');
+      const fileName = splitter[splitter.length-1]
+      const uploadDestination = path.resolve(__dirname, '../tmp', fileName);
+      await fs.promises.writeFile(uploadDestination, buffer);
+
+      const base64Image = buffer.toString('base64')
+
+      connect.socket.send(JSON.stringify(base64Image));
 
     })
   })
