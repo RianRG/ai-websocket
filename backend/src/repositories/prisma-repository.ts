@@ -15,7 +15,7 @@ export class PrismaRepository extends PrismaClient{
   async listTexts(){
     return await this.text.findMany({
       orderBy: {
-        createdAt: 'desc'
+        createdAt: 'asc'
       }
     })
   }
