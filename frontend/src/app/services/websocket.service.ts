@@ -27,4 +27,8 @@ export class WebsocketService {
   sendMessage(msg: string){
     this.websocket.send(msg);
   }
+
+  getMessages(){
+    return this.messages.asObservable();
+  }
 }

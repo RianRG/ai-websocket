@@ -9,6 +9,7 @@ import { WebsocketService } from 'src/app/services/websocket.service';
 })
 export class HomeComponent{
   form!: FormGroup;
+  messages: string[] = [];
   constructor(
     private fb: FormBuilder,
     private websocket: WebsocketService
@@ -17,6 +18,12 @@ export class HomeComponent{
       content: ['', Validators.required]
     })
   };
+
+  ngOnInit(): void{
+    this.websocket.getMessages().subscribe((data: string) =>{
+      this.messages.push(data)
+    })
+  }
 
   onSubmit(){
     this.websocket.sendMessage(this.form.value.content);

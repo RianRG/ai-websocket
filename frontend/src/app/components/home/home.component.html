@@ -1,4 +1,8 @@
 <main>
+  <ul *ngFor="let k of messages">
+    {{ k }}
+  </ul>
+
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <input type="text" required formControlName="content">
   </form>
