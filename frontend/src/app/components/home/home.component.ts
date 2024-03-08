@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IText } from 'src/app/interfaces/IText';
 import { HttpService } from 'src/app/services/http.service';
@@ -10,6 +10,8 @@ import { WebsocketService } from 'src/app/services/websocket.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent{
+  @ViewChild('hr') hr!: ElementRef
+
   form!: FormGroup;
   messages: IText[] = [];
   constructor(
@@ -34,6 +36,9 @@ export class HomeComponent{
         sender: 'Assistent'
       })
       this.form.enable();
+      if (this.hr && this.hr.nativeElement) {
+        this.hr.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'end' });
+      }
     })
   }
 
@@ -45,5 +50,8 @@ export class HomeComponent{
       sender: 'User'
     });
     this.form.reset();
+    if (this.hr && this.hr.nativeElement) {
+      this.hr.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'end' });
+    }
   }
 }
