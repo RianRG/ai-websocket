@@ -2,7 +2,7 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IText } from 'src/app/interfaces/IText';
 import { HttpService } from 'src/app/services/http.service';
-import { WebsocketService } from 'src/app/services/websocket.service';
+import { ChatService } from 'src/app/services/chat.service';
 
 @Component({
   selector: 'app-home',
@@ -16,7 +16,7 @@ export class HomeComponent{
   messages: IText[] = [];
   constructor(
     private fb: FormBuilder,
-    private websocket: WebsocketService,
+    private websocket: ChatService,
     private http: HttpService
   ){
 

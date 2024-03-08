@@ -4,7 +4,7 @@ import { BehaviorSubject, Subject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class WebsocketService {
+export class ChatService {
   websocket!: WebSocket;
   messages!: BehaviorSubject<string>;
 
