@@ -3,6 +3,7 @@ import websocket from '@fastify/websocket'
 import cors from '@fastify/cors'
 import { chatRoute } from './routes/chat';
 import { listTexts } from './routes/list-texts-route';
+import { imageChat } from './routes/image-chat';
 
 const app = fastify();
 
@@ -14,5 +15,6 @@ app.register(websocket)
 
 app.register(chatRoute)
 app.register(listTexts)
+app.register(imageChat)
 
 export { app };
