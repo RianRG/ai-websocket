@@ -1,6 +1,6 @@
 <main>
   <ul *ngFor="let k of messages">
-    {{ k }}
+    <li [ngClass]="k.sender==='User' ? 'user' : 'assistent'">{{ k.content }}</li>
   </ul>
 
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
