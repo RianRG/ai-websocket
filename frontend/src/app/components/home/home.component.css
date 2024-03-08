@@ -1,3 +1,8 @@
+*::selection{
+  background-color: rgb(154, 194, 154);
+  color: white;
+}
+
 main{
   padding: 30px;
   width: 100%;
@@ -7,7 +12,7 @@ main{
 }
 
 .display{
-  width: 900px;
+  width: 1000px;
 }
 
 .display li{
@@ -19,18 +24,30 @@ main{
 form{
   position: fixed;
   bottom: 20px;
+  width: 400px;
 }
 
 form input{
   outline: none;
   border: 2px solid black;
+  width: 100%;
+  padding: 10px 8px;
+  background-color: rgb(56, 56, 56);
+  border-radius: 10px;
+  color: white;
 }
 
 .user{
-  background-color: red;
   text-align: end;
 }
 
-.assistent{
-  background-color: blue;
+.display li p{
+  display: inline-block;
+  padding: 10px;
+  background-color: rgb(192, 192, 192);
+  max-width: 80%;
+}
+
+.assitent{
+  text-align: start;
 }
