@@ -1,7 +1,9 @@
 <main>
-  <ul *ngFor="let k of messages">
-    <li [ngClass]="k.sender==='User' ? 'user' : 'assistent'">{{ k.content }}</li>
-  </ul>
+  <div class="display">
+    <ul *ngFor="let k of messages">
+      <li [ngClass]="k.sender==='User' ? 'user' : 'assistent'">{{ k.content }}</li>
+    </ul>
+  </div>
 
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <input type="text" required formControlName="content">
