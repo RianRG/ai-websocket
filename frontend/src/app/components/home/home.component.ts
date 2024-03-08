@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { WebsocketService } from 'src/app/services/websocket.service';
 
 @Component({
   selector: 'app-home',
@@ -9,7 +10,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class HomeComponent{
   form!: FormGroup;
   constructor(
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private websocket: WebsocketService
   ){
     this.form = this.fb.group({
       content: ['', Validators.required]
@@ -17,6 +19,7 @@ export class HomeComponent{
   };
 
   onSubmit(){
-    console.log(this.form.value.content);
+    this.websocket.sendMessage(this.form.value.content);
+    this.form.reset();
   }
 }
