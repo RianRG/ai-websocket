@@ -16,8 +16,8 @@ export class HttpService {
     return this.http.get<IText[]>('http://localhost:5000/texts');
   }
 
-  getImages(): Observable<IImage[]>{
-    return this.http.get<IImage[]>('http://localhost:5000/images');
+  getImages(){
+    return this.http.get('http://localhost:5000/images');
   }
 
   getImageRequests(): Observable<IImageRequests[]>{

@@ -38,11 +38,31 @@ export class PrismaRepository extends PrismaClient{
   }
 
   async getImages(){
-    return await this.image.findMany({
+    const images = await this.image.findMany({
       orderBy: {
         createdAt: 'asc'
       }
     })
+
+  //  const imageRequests = await this.imageRequest.findMany();
+
+   return Promise.all(images.map(async data =>{
+    const request = await this.imageRequest.findUnique({
+      where: {
+        id: data.imageRequestId
+      }
+    })
+
+    if(!request)
+      throw new Error('request not found!');
+
+    return {
+      id: data.id,
+      createdAt: data.createdAt,
+      link: data.link,
+      imageRequest: request.content
+    }
+   }))
   }
 
   async getImageRequests(){

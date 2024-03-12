@@ -13,30 +13,22 @@ import { ImagesService } from 'src/app/services/images.service';
 export class ImagesChatComponent {
   imageForm!: FormGroup
   
-  images: IImage[]=[]
-  imageRequests: IImageRequests[]=[]
+  images: any[] = [];
 
   constructor(
     private fb: FormBuilder,
     private imagesService: ImagesService,
     private http: HttpService
   ){
-
-    this.http.getImages().subscribe((data: IImage[]) =>{
+    
+    this.http.getImages().subscribe((data: any) =>{
+      console.log(data)
       this.images = data;
     })
-
-    this.http.getImageRequests().subscribe((data: IImageRequests[]) =>{
-      this.imageRequests = data;
-      console.log(data);
-    })
-
     this.imageForm = this.fb.group({
       imageRequest: ['', Validators.required]
     })
   };
-
-
   onSubmit(){
     this.imagesService.sendMessage(this.imageForm.value.imageRequest)
     this.imageForm.reset();
