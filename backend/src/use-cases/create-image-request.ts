@@ -1,9 +1,10 @@
 import { PrismaRepository } from "../repositories/prisma-repository";
 
-export class CreateImage{
+export class CreateImageRequest{
+
   constructor(private database: PrismaRepository){};
 
-  async execute(link: string){
-    return this.database.createImage(link);
+  async execute(content: string){
+
   }
 }

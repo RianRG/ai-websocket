@@ -19,4 +19,20 @@ export class PrismaRepository extends PrismaClient{
       }
     })
   }
+
+  async createImage(link: string){
+    return await this.image.create({
+      data: {
+        link
+      }
+    })
+  }
+
+  async createImageRequest(content: string){
+    return await this.imageRequest.create({
+      data: {
+        content
+      }
+    })
+  }
 }
