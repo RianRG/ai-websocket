@@ -21,13 +21,18 @@ model Text {
 }
 
 model Image {
-  id        String   @id @default(uuid())
-  link      String
-  createdAt DateTime @default(now())
+  id             String   @id @default(uuid())
+  link           String
+  imageRequestId String   @unique
+  createdAt      DateTime @default(now())
+
+  requestOn ImageRequest @relation(fields: [imageRequestId], references: [id])
 }
 
 model ImageRequest {
   id        String   @id @default(uuid())
   content   String
   createdAt DateTime @default(now())
+
+  image Image?
 }

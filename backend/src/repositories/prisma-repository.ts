@@ -20,10 +20,11 @@ export class PrismaRepository extends PrismaClient{
     })
   }
 
-  async createImage(link: string){
+  async createImage(link: string, imageRequestId: string){
     return await this.image.create({
       data: {
-        link
+        link,
+        imageRequestId
       }
     })
   }

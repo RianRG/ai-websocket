@@ -26,7 +26,7 @@ export async function imageChat(app: FastifyInstance){
 
     connect.socket.on('message', async (content: string) =>{
       content = content.toString()
-      await createImageRequest.execute(content);
+      const imageRequest = await createImageRequest.execute(content);
       const output: any = await replicate.run(
         "stability-ai/stable-diffusion:ac732df83cea7fff18b8472768c88ad041fa750ff7682a21affe81863cbe77e4",
         {
@@ -44,7 +44,7 @@ export async function imageChat(app: FastifyInstance){
 
       const fileLink = output[0];
 
-      await createImage.execute(fileLink);
+      await createImage.execute(fileLink, imageRequest.id);
       connect.socket.send(fileLink);
 
     })
