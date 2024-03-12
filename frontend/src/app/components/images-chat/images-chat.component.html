@@ -1,5 +1,8 @@
 <main>
   <form [formGroup]="imageForm" (ngSubmit)="onSubmit()">
     <input type="text" formControlName="imageRequest">
+    <button type="submit">Enviar</button>
   </form>
+
+  <img src="{{ fileLink }}" alt="">
 </main>

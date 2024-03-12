@@ -9,6 +9,7 @@ import { ImagesService } from 'src/app/services/images.service';
 })
 export class ImagesChatComponent {
   imageForm!: FormGroup
+  fileLink!: string
   constructor(
     private images: ImagesService,
     private fb: FormBuilder
@@ -18,7 +19,14 @@ export class ImagesChatComponent {
     })
   };
 
+  ngOnInit(): void{
+    this.images.getMessage().subscribe(data =>{
+      this.fileLink = data;
+    })
+  }
+
   onSubmit(){
-    
+    this.images.sendMessage(this.imageForm.value.imageRequest)
+    this.imageForm.reset();
   }
 }

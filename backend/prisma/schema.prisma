@@ -19,3 +19,9 @@ model Text {
   sender    String
   createdAt DateTime @default(now())
 }
+
+model Image {
+  id        String   @id @default(uuid())
+  link      String
+  createdAt DateTime @default(now())
+}

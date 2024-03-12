@@ -16,7 +16,7 @@ export class ImagesService {
     }
 
     this.websocket.onmessage = (msg) =>{
-      console.log(msg.data)
+      this.messages.next(msg.data)
     }
 
     this.websocket.onclose = () =>{
@@ -25,6 +25,10 @@ export class ImagesService {
   }
 
   sendMessage(msg: string){
-    
+    this.websocket.send(msg);
+  }
+
+  getMessage(){
+    return this.messages.asObservable();
   }
 }

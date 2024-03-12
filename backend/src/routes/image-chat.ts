@@ -31,16 +31,7 @@ export async function imageChat(app: FastifyInstance){
 
       const fileLink = output[0];
 
-      const response: any = await fetch(fileLink);
-      const buffer = await response.buffer();
-      const splitter = fileLink.split('/');
-      const fileName = splitter[splitter.length-1]
-      const uploadDestination = path.resolve(__dirname, '../tmp', fileName);
-      await fs.promises.writeFile(uploadDestination, buffer);
-
-      const base64Image = buffer.toString('base64')
-
-      connect.socket.send(JSON.stringify(base64Image));
+      connect.socket.send(fileLink);
 
     })
   })
