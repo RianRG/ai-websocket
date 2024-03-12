@@ -43,4 +43,12 @@ export class PrismaRepository extends PrismaClient{
       }
     })
   }
+
+  async getImageRequests(){
+    return await this.imageRequest.findMany({
+      orderBy: {
+        createdAt: 'asc'
+      }
+    })
+  }
 }
