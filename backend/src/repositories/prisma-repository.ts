@@ -12,7 +12,7 @@ export class PrismaRepository extends PrismaClient{
     })
   }
 
-  async listTexts(){
+  async getTexts(){
     return await this.text.findMany({
       orderBy: {
         createdAt: 'asc'
@@ -32,6 +32,14 @@ export class PrismaRepository extends PrismaClient{
     return await this.imageRequest.create({
       data: {
         content
+      }
+    })
+  }
+
+  async getImages(){
+    return await this.image.findMany({
+      orderBy: {
+        createdAt: 'asc'
       }
     })
   }

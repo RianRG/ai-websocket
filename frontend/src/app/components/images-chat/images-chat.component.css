@@ -1,0 +1,57 @@
+*::selection{
+  background-color: rgb(154, 194, 154);
+  color: white;
+}
+
+main{
+  padding: 30px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.display{
+  width: 1000px;
+}
+
+.display li{
+  padding: 8px;
+  margin-bottom: 20px;
+  font-size: 1.1rem;
+}
+
+form{
+  position: fixed;
+  bottom: 20px;
+  width: 400px;
+}
+
+form input{
+  outline: none;
+  border: 2px solid black;
+  width: 100%;
+  padding: 10px 8px;
+  background-color: rgb(56, 56, 56);
+  border-radius: 10px;
+  color: white;
+}
+
+.user{
+  text-align: end;
+}
+
+.display li p{
+  display: inline-block;
+  padding: 10px;
+  background-color: rgb(192, 192, 192);
+  max-width: 80%;
+}
+
+.assistent{
+  text-align: start;
+}
+
+hr{
+  margin-top: 200px;
+}

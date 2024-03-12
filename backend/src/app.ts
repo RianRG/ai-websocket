@@ -2,7 +2,7 @@ import fastify from 'fastify';
 import websocket from '@fastify/websocket'
 import cors from '@fastify/cors'
 import { chatRoute } from './routes/chat';
-import { listTexts } from './routes/list-texts-route';
+import { listTexts } from './routes/get-texts';
 import { imageChat } from './routes/image-chat';
 
 const app = fastify();
