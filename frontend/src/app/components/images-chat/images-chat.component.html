@@ -1,6 +1,8 @@
 <main>
   <div class="display">
-    <img src="{{ fileLink }}" alt="">
+    <ul *ngFor="let k of content">
+      <img src="{{ k.link }}" alt="">
+    </ul>
   </div>
 
 
