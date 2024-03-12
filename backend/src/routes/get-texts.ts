@@ -6,10 +6,10 @@ export async function getTextsRoute(app: FastifyInstance){
   app.get('/texts', async (req, res) =>{
     const prismaRepository = new PrismaRepository()
 
-    const listTexts = new GetTexts(
+    const getTexts = new GetTexts(
       prismaRepository
     )
 
-    return listTexts.execute();
+    return getTexts.execute();
   })
 }

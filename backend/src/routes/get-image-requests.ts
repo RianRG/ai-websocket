@@ -3,7 +3,7 @@ import { PrismaRepository } from "../repositories/prisma-repository";
 import { GetImageRequests } from "../use-cases/get-image-requests";
 
 export async function getImageRequestsRoute(app: FastifyInstance){
-  app.get('/images', async (req, res) =>{
+  app.get('/image-requests', async (req, res) =>{
     const prismaRepository = new PrismaRepository()
     const getImageRequests = new GetImageRequests(
       prismaRepository
