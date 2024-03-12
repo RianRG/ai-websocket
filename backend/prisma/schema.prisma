@@ -25,3 +25,9 @@ model Image {
   link      String
   createdAt DateTime @default(now())
 }
+
+model ImageRequest {
+  id        String   @id @default(uuid())
+  content   String
+  createdAt DateTime @default(now())
+}
