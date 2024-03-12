@@ -13,16 +13,22 @@ import { ImagesService } from 'src/app/services/images.service';
 export class ImagesChatComponent {
   imageForm!: FormGroup
   
-  content!: IImage[]
+  images: IImage[]=[]
+  imageRequests: IImageRequests[]=[]
 
   constructor(
     private fb: FormBuilder,
-    private images: ImagesService,
+    private imagesService: ImagesService,
     private http: HttpService
   ){
 
     this.http.getImages().subscribe((data: IImage[]) =>{
-      this.content = data;
+      this.images = data;
+    })
+
+    this.http.getImageRequests().subscribe((data: IImageRequests[]) =>{
+      this.imageRequests = data;
+      console.log(data);
     })
 
     this.imageForm = this.fb.group({
@@ -30,15 +36,10 @@ export class ImagesChatComponent {
     })
   };
 
-  ngOnInit(): void{
-    // this.images.getMessage().subscribe(data =>{
-    //   // this.fileLink = data;
-    // })
-    console.log(this.content)
-  }
 
   onSubmit(){
-    this.images.sendMessage(this.imageForm.value.imageRequest)
+    this.imagesService.sendMessage(this.imageForm.value.imageRequest)
     this.imageForm.reset();
+    this.imageForm.disable();
   }
 }
