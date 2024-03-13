@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.GetImageRequests = void 0;
 class GetImageRequests {
+    database;
     constructor(database) {
         this.database = database;
     }
