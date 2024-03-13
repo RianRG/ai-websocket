@@ -1,0 +1,64 @@
+main{
+  padding: 30px;
+  background-color: var(--background);
+}
+
+*::selection{
+  background-color: rgb(154, 194, 154);
+  color: white;
+}
+
+aside{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+main h1{
+  display: inline-block;
+  color: var(--text);
+  cursor: pointer;
+  transition: .4s;
+  font-size: 2rem;
+}
+
+span{
+  background-color: var(--secondary);
+  transition: .4s;
+  padding: 1.5px 1px;
+}
+
+main h1:hover{
+  background-color: var(--primary);
+}
+
+main h1:hover span{
+  background-color: var(--background);
+}
+
+.display{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.right{
+  width: 50%;
+  height: 100vh;
+}
+
+.left{
+  width: 50%;
+  height: 100vh;
+  position: relative;
+}
+
+.left::after{
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 40px;
+  height: 400px;
+  width: 4px;
+  background-color: var(--primary);
+}

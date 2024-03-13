@@ -8,12 +8,14 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ChatComponent } from './components/chat/chat.component';
 import { ImagesChatComponent } from './components/images-chat/images-chat.component';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ChatComponent,
-    ImagesChatComponent
+    ImagesChatComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

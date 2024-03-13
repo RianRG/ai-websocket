@@ -8,3 +8,11 @@
   list-style-type: none;
   font-family: 'Poppins', sans-serif;
 }
+
+:root{
+  --text: #181511;
+  --background: #fbfaf9;
+  --primary: #a08870;
+  --secondary: #aac6b4;
+  --accent: #90b5b4;
+}
