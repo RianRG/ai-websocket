@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './components/home/home.component';
+import { ChatComponent } from './components/chat/chat.component';
 import { ImagesChatComponent } from './components/images-chat/images-chat.component';
 
 const routes: Routes = [
-  { path: 'chat', component: HomeComponent },
+  { path: 'chat', component: ChatComponent },
   { path: 'chat/images', component: ImagesChatComponent }
 ];
 

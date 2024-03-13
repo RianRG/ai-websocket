@@ -6,10 +6,10 @@ import { ChatService } from 'src/app/services/chat.service';
 
 @Component({
   selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  templateUrl: './chat.component.html',
+  styleUrls: ['./chat.component.css']
 })
-export class HomeComponent{
+export class ChatComponent{
   @ViewChild('hr') hr!: ElementRef
 
   form!: FormGroup;
