@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IImage } from 'src/app/interfaces/IImage';
 import { IImageRequests } from 'src/app/interfaces/IImageRequests';
@@ -11,8 +11,9 @@ import { ImagesService } from 'src/app/services/images.service';
   styleUrls: ['./images-chat.component.css']
 })
 export class ImagesChatComponent {
+  @ViewChild('hr') hr!: ElementRef
+
   imageForm!: FormGroup
-  
   images: any[] = [];
 
   constructor(
@@ -22,16 +23,36 @@ export class ImagesChatComponent {
   ){
     
     this.http.getImages().subscribe((data: any) =>{
-      console.log(data)
       this.images = data;
     })
     this.imageForm = this.fb.group({
       imageRequest: ['', Validators.required]
     })
   };
+
+  ngOnInit(): void{
+    this.imagesService.getMessages().subscribe(data =>{
+      console.log(`data::: ${data}`)
+      this.images.push({
+        link: data,
+      });
+      this.imageForm.enable();
+      if (this.hr && this.hr.nativeElement) {
+        this.hr.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'end' });
+      }
+    })
+  }
+
   onSubmit(){
-    this.imagesService.sendMessage(this.imageForm.value.imageRequest)
-    this.imageForm.reset();
     this.imageForm.disable();
+    this.imagesService.sendMessage(this.imageForm.value.imageRequest)
+    this.images.push({
+      imageRequest: this.imageForm.value.imageRequest
+    })
+    
+    this.imageForm.reset();
+    if (this.hr && this.hr.nativeElement) {
+      this.hr.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'end' });
+    }
   }
 }
