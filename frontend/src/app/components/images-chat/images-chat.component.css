@@ -15,11 +15,6 @@ main{
   width: 1000px;
 }
 
-.display li{
-  padding: 8px;
-  margin-bottom: 20px;
-  font-size: 1.1rem;
-}
 
 form{
   position: fixed;
@@ -37,21 +32,15 @@ form input{
   color: white;
 }
 
-.user{
-  text-align: end;
-}
-
-.display li p{
-  display: inline-block;
-  padding: 10px;
-  background-color: rgb(192, 192, 192);
-  max-width: 80%;
-}
-
-.assistent{
-  text-align: start;
-}
-
 hr{
   margin-top: 200px;
+}
+
+.display img{
+  max-width: 300px;
+}
+
+.display p{
+  text-align: end;
+  font-size: 1.1rem;
 }

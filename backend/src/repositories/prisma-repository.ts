@@ -44,8 +44,6 @@ export class PrismaRepository extends PrismaClient{
       }
     })
 
-  //  const imageRequests = await this.imageRequest.findMany();
-
    return Promise.all(images.map(async data =>{
     const request = await this.imageRequest.findUnique({
       where: {

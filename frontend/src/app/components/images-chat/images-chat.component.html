@@ -2,13 +2,12 @@
   <div class="display">
     <ul *ngFor="let k of images">
       <img src="{{ k.link }}" alt="">
-      <h1>{{ k.imageRequest }}</h1>
+      <p>{{ k.imageRequest }}</p>
     </ul>
   </div>
 
 
   <form [formGroup]="imageForm" (ngSubmit)="onSubmit()">
     <input type="text" formControlName="imageRequest">
-    <button type="submit">Enviar</button>
   </form>
 </main>
