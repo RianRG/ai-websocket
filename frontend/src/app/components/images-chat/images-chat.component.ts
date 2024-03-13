@@ -1,7 +1,5 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { IImage } from 'src/app/interfaces/IImage';
-import { IImageRequests } from 'src/app/interfaces/IImageRequests';
 import { HttpService } from 'src/app/services/http.service';
 import { ImagesService } from 'src/app/services/images.service';
 
@@ -23,6 +21,7 @@ export class ImagesChatComponent {
   ){
     
     this.http.getImages().subscribe((data: any) =>{
+      console.log(data);
       this.images = data;
     })
     this.imageForm = this.fb.group({
