@@ -14,7 +14,7 @@ main{
 .display{
   display: flex;
   flex-direction: column;
-  gap: 50px;
+  gap: 70px;
   width: 1000px;
 }
 
@@ -43,7 +43,13 @@ hr{
   max-width: 300px;
 }
 
-.display p{
+.display li{
   text-align: end;
-  font-size: 1.4rem;
+}
+
+.display p{
+  display: inline-block;
+  font-size: 1.2rem;
+  padding: 10px;
+  background-color: rgb(192, 192, 192);
 }

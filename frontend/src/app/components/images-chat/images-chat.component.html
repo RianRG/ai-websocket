@@ -1,7 +1,9 @@
 <main>
   <div class="display">
     <ul *ngFor="let k of images">
-      <p>{{ k.imageRequest }}</p>
+      <li>
+        <p>{{ k.imageRequest }}</p>
+      </li>
       <img src="{{ k.link }}" alt="">
     </ul>
     <hr #hr>
