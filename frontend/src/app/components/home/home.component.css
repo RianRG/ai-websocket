@@ -56,13 +56,9 @@ section{
   justify-content: center;
   align-items: center;
   width: 50%;
-  position: relative;
 }
 
-.left::after{
-  content: '';
-  position: absolute;
-  right: 0;
+hr{
   top: -30px;
   height: 400px;
   width: 4px;
@@ -96,4 +92,48 @@ article p{
   font-size: 1.2rem;
   text-align: center;
   margin-bottom: 20px;
+}
+
+@media (max-width: 728px){
+  .left article{
+    margin-right: 40px;
+  }
+
+  .right article{
+    margin-left: 40px;
+  }
+}
+
+@media (max-width: 501px){
+  main h1{
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  section{
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .left article{
+    margin-right: 0;
+  }
+
+  .right article{
+    margin-left: 0;
+  }
+
+  .left{
+    width: 100%;
+  }
+
+  .right{
+    width: 100%;
+    position: relative;
+  }
+
+  hr{
+    height: 4px;
+    width: 90%;
+  }
 }
