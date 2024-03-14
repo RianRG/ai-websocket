@@ -12,8 +12,9 @@ const app = fastify();
 app.register(cors, {
   origin: [
     'https://ai-websocket.vercel.app/',
-    'https://ai-websocket.vercel.app/chat',
-    'https://ai-websocket.vercel.app/chat/images'
+    'https://ai-websocket.vercel.app/image-requests',
+    'https://ai-websocket.vercel.app/texts',
+    'https://ai-websocket.vercel.app/images'
   ],
   credentials: true
 })
