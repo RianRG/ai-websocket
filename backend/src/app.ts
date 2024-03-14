@@ -10,7 +10,7 @@ import { getImageRequestsRoute } from './routes/get-image-requests';
 const app = fastify();
 
 app.register(cors, {
-  origin: 'http://localhost:4200',
+  origin: 'https://ai-websocket.vercel.app/',
   credentials: true
 })
 app.register(websocket)
