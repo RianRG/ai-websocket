@@ -1,13 +1,114 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.getImagesRoute = void 0;
-const prisma_repository_1 = require("../repositories/prisma-repository");
-const get_images_1 = require("../use-cases/get-images");
-async function getImagesRoute(app) {
-    app.get('/images', async (req, res) => {
-        const prismaRepository = new prisma_repository_1.PrismaRepository();
-        const getImages = new get_images_1.GetImages(prismaRepository);
-        return getImages.execute();
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+
+// src/routes/get-images.ts
+var get_images_exports = {};
+__export(get_images_exports, {
+  getImagesRoute: () => getImagesRoute
+});
+module.exports = __toCommonJS(get_images_exports);
+
+// src/repositories/prisma-repository.ts
+var import_client = require("@prisma/client");
+var PrismaRepository = class extends import_client.PrismaClient {
+  async createText({ sender, content }) {
+    return await this.text.create({
+      data: {
+        sender,
+        content
+      }
     });
+  }
+  async getTexts() {
+    return await this.text.findMany({
+      orderBy: {
+        createdAt: "asc"
+      }
+    });
+  }
+  async createImage(link, imageRequestId) {
+    return await this.image.create({
+      data: {
+        link,
+        imageRequestId
+      }
+    });
+  }
+  async createImageRequest(content) {
+    return await this.imageRequest.create({
+      data: {
+        content
+      }
+    });
+  }
+  async getImages() {
+    const images = await this.image.findMany({
+      orderBy: {
+        createdAt: "asc"
+      }
+    });
+    return Promise.all(images.map(async (data) => {
+      const request = await this.imageRequest.findUnique({
+        where: {
+          id: data.imageRequestId
+        }
+      });
+      if (!request)
+        throw new Error("request not found!");
+      return {
+        id: data.id,
+        createdAt: data.createdAt,
+        link: data.link,
+        imageRequest: request.content
+      };
+    }));
+  }
+  async getImageRequests() {
+    return await this.imageRequest.findMany({
+      orderBy: {
+        createdAt: "asc"
+      }
+    });
+  }
+};
+
+// src/use-cases/get-images.ts
+var GetImages = class {
+  constructor(database) {
+    this.database = database;
+  }
+  execute() {
+    return this.database.getImages();
+  }
+};
+
+// src/routes/get-images.ts
+async function getImagesRoute(app) {
+  app.get("/images", async (req, res) => {
+    const prismaRepository = new PrismaRepository();
+    const getImages = new GetImages(
+      prismaRepository
+    );
+    return getImages.execute();
+  });
 }
-exports.getImagesRoute = getImagesRoute;
+// Annotate the CommonJS export names for ESM import in node:
+0 && (module.exports = {
+  getImagesRoute
+});
