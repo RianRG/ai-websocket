@@ -9,7 +9,7 @@ export class ImagesService {
   messages!: BehaviorSubject<string>;
 
   constructor() { 
-    this.websocket = new WebSocket('ws://localhost:5000/chat/images')
+    this.websocket = new WebSocket('ws://ai-websocket.onrender.com/chat/images')
     this.messages = new BehaviorSubject<string>('');
     this.websocket.onopen = () =>{
       console.log('runnin')

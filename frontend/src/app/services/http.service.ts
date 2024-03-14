@@ -11,14 +11,14 @@ export class HttpService {
   constructor(private http: HttpClient) { }
 
   getTexts(): Observable<IText[]>{
-    return this.http.get<IText[]>('http://localhost:5000/texts');
+    return this.http.get<IText[]>('https://ai-websocket.onrender.com/texts');
   }
 
   getImages(){
-    return this.http.get('http://localhost:5000/images');
+    return this.http.get('https://ai-websocket.onrender.com/images');
   }
 
   getImageRequests(){
-    return this.http.get('http://localhost:5000/image-requests');
+    return this.http.get('https://ai-websocket.onrender.com/image-requests');
   }
 }

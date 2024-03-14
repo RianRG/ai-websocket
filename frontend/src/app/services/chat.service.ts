@@ -9,7 +9,7 @@ export class ChatService {
   messages!: BehaviorSubject<string>;
 
   constructor() { 
-    this.websocket = new WebSocket('ws://localhost:5000/chat')
+    this.websocket = new WebSocket('ws://ai-websocket.onrender.com/chat')
     this.messages = new BehaviorSubject<string>('');
     this.websocket.onopen = () =>{
       console.log('runnin')
