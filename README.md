@@ -7,7 +7,7 @@ It's a project that allows the user to chat with an IA model and request images 
 ## Main concept
 The texts and image requests are stored on a Postgres database (containerized by a Docker-compose during development) using Prisma. 
 
-On backend, we basically need to receive the user's message, send it to the IA (using replicate IA for this project), save the message and the IA's answer on database too.
+On backend, we basically need to receive the user's message, send it to the IA (using replicate IA for this project), save the message and the IA's answer on database.
 
 On frontend, to display all the messages on screen, we need to assign the messages received in real time (websocket) to an array. Ok, I know that you're thinking "awwww, when the user restarts the page, he loses all texts OOHH NOO!!", but I have the solution: 
 
