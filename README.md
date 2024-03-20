@@ -1,5 +1,9 @@
 # Chat with an IA
 
+
+https://github.com/RianRG/ai-websocket/assets/134891464/3de4a098-33b4-4b6f-aaa2-64e3ef459eb0
+
+
 ## Description
 A fullstack project based on Chatgpt and others "chat with ia" models.
 It's a project that allows the user to chat with an IA model and request images for her through a Websocket protocol.
