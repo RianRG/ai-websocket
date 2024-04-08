@@ -7,7 +7,7 @@ describe('text routes', () =>{
   it('should be able to list all texts', async () =>{
     const texts = await prismaRepository.getTexts()
 
-    console.log(texts);
+    console.log(texts)
 
     expect(200).toEqual(200)
   })
